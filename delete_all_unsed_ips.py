@@ -3,6 +3,8 @@ import boto3
 
 #print("please enter your region")
 #Regions=input()
+print("please enter your region")
+Regions=input()
 ec2 = boto3.resource("ec2")
 
 unused_ips = {}
@@ -32,8 +34,4 @@ for region in ec2.meta.client.describe_regions()["Regions"]:
 
 print(f"Found and deleted {len(unused_ips)} unused Elastic IPs across all regions:")
 print(unused_ips)
-
-
-
-
 

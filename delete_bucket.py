@@ -7,14 +7,15 @@ s3=boto3.resource("s3")
 
 bucket_name=input ("enter bucket name to delete ")
 def delete_s3_bucket(bucket_name):
+    getlist = s3.list_buckets()
     
-    response = client.delete_bucket(
-    Bucket=bucket_name,
+    if "Contents" not in getlist:
+        response = client.delete_bucket(
+        Bucket=bucket_name,
    
     
     )
-
-    
+   
     try:
          print(f"S3 bucket with name  '{bucket_name}' deleted successfully")
          return True

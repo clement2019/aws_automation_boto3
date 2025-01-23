@@ -6,8 +6,8 @@
 
 import boto3
 print("please enter your region")
-RegionName=input()
-def cleanup_snapshots():
+Regions=input()
+def cleanup_snapshots(Regions):
     ec2 = boto3.client('ec2')
     regions = [region['RegionName'] for region in ec2.describe_regions()['Regions']]
     for region in regions:
@@ -24,4 +24,4 @@ def cleanup_snapshots():
         print(f"Finished cleaning up snapshots in {region}")
 
 if __name__ == '__main__':
-   cleanup_snapshots()
+    cleanup_snapshots(Regions)
